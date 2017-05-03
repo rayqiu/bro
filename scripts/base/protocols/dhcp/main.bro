@@ -98,6 +98,7 @@ event dhcp_ack(c: connection, msg: dhcp_msg, mask: addr, router: dhcp_router_lis
 
 event dhcp_ack(c: connection, msg: dhcp_msg, mask: addr, router: dhcp_router_list, lease: interval, serv_addr: addr, host_name: string) &priority=-5
         {
-        Log::write(DHCP::LOG, c$dhcp);
+        if (c?$dhcp)
+                Log::write(DHCP::LOG, c$dhcp);
         }
 
